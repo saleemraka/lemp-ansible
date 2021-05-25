@@ -1,0 +1,12 @@
+---
+# tasks file for firewall
+
+- name: Configuring firewall on webservers nodes 
+  firewalld:
+        service: "{{ item }}" 
+        state: enabled 
+        permanent: yes
+  loop:
+        - http
+        - https
+  notify: Reload firewall
